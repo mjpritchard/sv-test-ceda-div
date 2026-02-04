@@ -1,0 +1,275 @@
+[main]
+    separator = "-"
+    description = "The Centre for Environmental Data Analysis serves the environmental science community by the provision of data centres, data analysis & access, and research project participation."
+    enableLanguageSelectionStorage = false
+    canonifyAssetsURLs = false
+    footerBelowFold = true
+    loading = "lazy"
+    titleCase = false # keep this false to avoid issues with inline code in headings
+    [main.padding]
+        x = 4
+        y = 4
+    [main.externalLinks]
+        cue = true
+        tab = true
+    #[main.build]
+    #    transpiler = "dartsass"
+    #    silenceDeprecations = true
+    #endorse = true
+    #breakpoint = "md"
+    [main.build]
+        transpiler = "libsass"
+    [main.colorMode]
+        modes = ["light", "dark"]
+        toggle = false # setting seems wrong way round!
+
+[debugging]
+    showJS = false
+    showSCSS = false
+    purgeHTMLComments = true
+
+[docs]
+    #basePath = "_vendor/github.com/gethinode/hinode"
+    github = "https://github.com/cedadev/ceda-div-hugo-hinode"
+    #release = "https://github.com/gethinode/hinode/releases/tag/"
+
+[home]
+    fullCover = false
+    centerHeadline = false
+    style = ""
+    #[home.feature]
+    #orientation = "horizontal"
+    #color = "primary"
+    #width = 4
+    #align = "start"
+
+[navigation]
+    anchor = true
+    logo = "/img/logos/ceda-logo-light.png" # store -light and -dark variants
+    logo-height = 80
+    color = "body-tertiary"
+    fixed = true
+    overlay = false
+    overlayMode = "dark"
+    horizontal = false
+    offset = "5.5rem"
+    [search]
+        search.enabled = true
+        search.modal = true
+    breadcrumb = true
+    toc = true
+    sidebar = true
+    size = "md"
+    # TOC options new with v1.10.0
+    startLevel = 2 # need to specify these ...
+    endLevel = 4 # to avoid spurious [ ] in TOC menu
+    #maxNumHeadings = 4
+    [navigation.padding]
+        x = 1
+        y = 1
+
+[messages]
+    placement = "bottom-right"
+
+[sharing]
+    enabled = true
+    sort = "weight"
+    reverse = false
+    webshare = true
+
+[[sharing.providers]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/sharing/share-offsite/?url={url}"
+    icon = "fab linkedin"
+    weight = 10
+
+[[sharing.providers]]
+    name = "Facebook"
+    url = "https://www.facebook.com/sharer.php?u={url}"
+    icon = "fab facebook"
+    weight = 20
+
+[[sharing.providers]]
+    name = "WhatsApp"
+    url = "whatsapp://send?text={title}%20{url}"
+    icon = "fab whatsapp"
+    weight = 30
+
+[[sharing.providers]]
+    name = "link"
+    url = "{url}"
+    icon = "fas link"
+    weight = 50
+    clipboard = true
+
+[[sharing.providers]]
+    name = "custom link"
+    url = "[{title}]({url})"
+    icon = "fas star"
+    title = "custom link"
+    weight = 60
+    clipboard = true
+
+[favicon]
+    logo = "img/favicon.png"
+    sizes = [16, 32, 48]
+
+#[sections]
+#    [sections.news]
+#        title = "News"
+#        sort = "date"
+#        reverse = true
+        #nested = true # TODO check at https://gethinode.com/docs/configuration/layout/
+#        cols = 3
+#        color = ""
+#        padding = "0"
+#        header = "full"
+#        footer = "none"
+#        orientation = "stacked"
+#        style = "border-0 card-zoom card-body-margin"
+#        homepage = 3
+#        separator = true
+#    [sections.priorities]
+#        title = "Our priorities at CEDA"
+#        layout = "nav"
+#        sort = "weight"
+#        reverse = false
+#        background = "body-tertiary"
+#        color = "primary"
+#        style = "justify-content-center"
+#        pane = "persona"
+#        type = "pills"
+#        class = "nav-justified"
+#        width = 100
+#    [sections.events]
+#        title = "Events"
+#        layout = "card"
+#        sort = "date"
+#        reverse = true
+        #nested = true # TODO check at https://gethinode.com/docs/configuration/layout/
+#        cols = 3
+#        color = ""
+#        padding = "0"
+#        header = "full"
+#        footer = "none"
+#        orientation = "horizontal"
+#        style = "border-0 card-zoom"
+#        homepage = 3
+#        separator = true
+#    [sections.projects]
+#        title = "Projects"
+#        layout = "card"
+#        sort = "date"
+#        reverse = true
+        #nested = true # TODO check at https://gethinode.com/docs/configuration/layout/
+#        cols = 3
+#        background = "body-tertiary"
+#        color = "body"
+#        padding = "3"
+#        header = "none"
+#        footer = "tags"
+#        orientation = "horizontal"
+#        style = "border-1 card-emphasize"
+#        homepage = 3
+#        pagination.pagerSize = 6
+#        separator = false
+#    [sections.about]
+#        title = "Find out more about us"
+#        layout = "card"
+#        pagination.pagerSize = 3
+#    [sections.services]
+#        title = "Services we run"
+#        layout = "list"
+#        sort = "date"
+
+[style]
+    primary = "#446E9B"
+    secondary = "#999999"
+    success = "#3CB521"
+    info = "#3399F3"
+    warning = "#D47500"
+    danger = "#CD0200"
+    light = "#EEEEEE"
+    dark = "#333333"
+# toml-docs-end theme-colors
+    themeOpacity = "10"
+    darkModeShade = "20%"
+    darkModeTint = "40%"
+# toml-docs-start font
+    themeFont = "Lato"
+    themeFontPath = "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" # external path
+    #themeFontPath = "/fonts" # local path
+    purge = false
+
+[schema]
+    type = "Organization"
+    name = "CEDA"
+    locale = "en-GB"
+    github = "https://github.com/cedadev"
+    #section = "news"
+    [schema.author]
+        name = "Matt Pritchard"
+    [schema.logo]
+        url = "img/logos/ceda-logo-whitebg-small.png?source=schema.logo"
+        width = 48
+        height = 48
+    [schema.image]
+        url = "img/logos/ceda-logo-whitebg-small.png?source=schema.image"
+        width = 48
+        height = 48
+
+[opengraph]
+    images = ["img/logos/ceda-logo-whitebg-small.png?source=opengraph"]
+    locale = "en_GB"
+
+[comments]
+    enabled = false
+    repo = "" # Replace with your repository.
+    #issueTerm = "pathname" # pathname, url, title, og:title
+    #label = "comment"
+    # By default, light and dark mode correspond to github-light and github-dark, respectively.
+    # Optional values: github-light, github-dark, preferred-color-scheme, github-dark-orange, icy-dark, dark-blue, photon-dark.
+    #theme = "" 
+
+[links]
+    bs_badge_heading = "https://getbootstrap.com/docs/5.2/components/badge/#headings"
+    hinode_docs = "https://gethinode.com/docs"
+    hugo_imaging = "https://gohugo.io/content-management/image-processing/#imaging-configuration"
+    mozilla_image = "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images"
+    observatory = "https://observatory.mozilla.org/analyze/demo.gethinode.com"
+    pagespeed = "https://pagespeed.web.dev/report?url=https%3A%2F%2Fdemo.gethinode.com%2F"
+    utterances = "https://utteranc.es"
+    hugo = "https://gohugo.io"
+    # curated local links
+    ceda_site = "/"
+    ceda_archive = "https://archive.ceda.ac.uk"
+    ceda_catalogue = "https://catalogue.ceda.ac.uk"
+    ceda_helpdocs = "https://help.ceda.ac.uk"
+    ceda_helpdesk = "https://help.ceda.ac.uk"
+    ceda_status = "/status"
+    ceda_contact = "/contact"
+    nceo = "https://www.nceo.ac.uk"
+    ncas = "https://www.ncas.ac.uk"
+    jasmin = "https://www.jasmin.ac.uk"
+    stfc = "https://stfc.ukri.org"
+    nerc = "https://nerc.ukri.org"
+    ukri = "https://ukri.org"
+
+[statusClasses]
+    "down" = "danger"
+    "resolved" = "success"
+    "degraded" = "warning"
+    "at risk" = "dark"
+
+[statusData]
+    # URL for publicly-shared CSV view of Google Sheet with CEDA status updates
+    #"sourceURL" = "https://cedadev.github.io/ceda-status/status.json"
+    #"sourceURL" = "http://127.0.0.1:8080/status.json"
+    "sourceURL" = "https://mjpritchard.github.io/mjp-status/status.json"
+    #"sourceURL" = "https://raw.githubusercontent.com/mjpritchard/mjp-status/refs/heads/main/status.json"
+    # https://stackoverflow.com/a/25373840/20939086
+    "viewURL" = "https://github.com/cedadev/ceda-status/blob/main/status.json"
+
+#[modules.cookieyes]
+    #url = "https://cdn-cookieyes.com/client_data/NNNN/script.js" # need client ID?
+    #local = false

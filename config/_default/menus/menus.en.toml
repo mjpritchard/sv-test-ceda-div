@@ -1,0 +1,46 @@
+[[main]]
+  name = "News"
+  pageRef = "/news/"
+  weight = 10
+
+[[main]]
+  name = "Events"
+  pageRef = "/events/"
+  weight = 20
+
+[[main]]
+  name = "Status"
+  pageRef = "/status/"
+  weight = 30
+  
+[[main]]
+  name = "Projects"
+  pageRef = "/projects/"
+  weight = 40
+
+[[main]]
+  name = "Outreach"
+  pageRef = "/outreach/"
+  weight = 50
+
+[[main]]
+  name = "TechBlog"
+  url = "https://techblog.ceda.ac.uk/"
+  weight = 60
+
+[[main]]
+  name = "About"
+  pageRef = "/about/"
+  weight = 70
+
+[[social]]
+  name = "YouTube"
+  pre = "fab fa-youtube"
+  url = "https://www.youtube.com/channel/UCYjSH2ET9nLMhDcXa5y2OMg"
+  weight = 20
+
+[[social]]
+  name = "GitHub"
+  pre = "fab fa-github"
+  url = "https://github.com/cedadev"
+  weight = 30

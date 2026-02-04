@@ -1,0 +1,177 @@
+{{ define "main"}}
+    <div class="container-fluid ">
+        <div class="container-xxl flex-fill p-0">
+            <div class="container-fluid p-4 px-xxl-0">
+                <p class="display-4 mt-3">{{.Title}}</p>
+                <p class="lead mb-5">{{.Description}}</p>
+                {{ .Content }}
+
+                {{- with $url := .Site.Params.statusData.sourceURL }}
+                    {{ $jsonSource := $url }}
+
+                <!-- TABLE CONSTRUCTION-->
+                    <div id="incident-tables">
+                    <div class="alert alert-info small" role="alert">The tables below will automatically refresh in <span id="countdown"></span> seconds.</div>
+                    <h2>Current incidents</h2>
+
+                    <table class="table table-sm table-striped table-responsive">
+                        <thead>
+                            <tr> 
+                                <th>date</th> 
+                                <th>status</th>
+                                <th>summary</th> 
+                                <th>affected services</th> 
+                                <th>updates</th>               
+                            </tr>
+                        </thead>
+                        <tbody id="current-table-body">
+                        </tbody>
+                    </table>
+
+                    <h2>Future incidents</h2>
+                    <table id="future-table" class="table table-sm table-striped table-responsive">
+                        <thead>
+                            <tr> 
+                                <th>date</th> 
+                                <th>status</th>
+                                <th>summary</th> 
+                                <th>affected services</th> 
+                                <th>updates</th>               
+                            </tr>
+                        </thead>
+                        <tbody id="future-table-body">
+                        </tbody>
+                    </table>
+                </div> <!-- incident-tables -->
+
+                <script>
+
+                    // Function to update the countdown and refresh the page
+                    function updateCountdown() {
+
+                        const initSeconds = 60; // Interval to re-fetch JSON data
+
+                        const countdownElement = document.getElementById('countdown');
+                        let seconds = parseInt(countdownElement.textContent);
+
+                        if (seconds > 0) {
+                            seconds--;
+                            countdownElement.textContent = seconds;
+                        } else {
+                            countdownElement.textContent = initSeconds;
+                            getUpdatedStatusContent();
+                        }
+                    }
+
+                    // Set a 1-second timer for updating the countdown
+                    setInterval(updateCountdown, 1000); // 1000 milliseconds = 1 second
+
+                    // Function to fetch the updated JSON content and render as new table bodies
+                    function getUpdatedStatusContent () { 
+
+                        var DateTime = luxon.DateTime;
+                        var statusClasses = {
+                            "down": "danger",
+                            "resolved": "success",
+                            "degraded": "warning",
+                            "at risk": "dark"
+                        };
+                        // Generate random string to ensure no caching of JSON source
+                        const generateRandomString = (length=16)=>Math.random().toString(20).substr(2, length)
+                        var randomString = generateRandomString();
+
+                        ReverseSortByDate = (b, a) =>  
+                            a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+
+                        // FETCHING DATA FROM JSON FILE
+                        $.getJSON("{{ $jsonSource }}?random="+randomString, 
+                            function (dataObject) { 
+                                var incidents = [];
+                                $.each( dataObject, function (key, value) {
+                                    var incident = {
+                                        "date": DateTime.fromISO(value.date),
+                                        "status": value.status,
+                                        "summary": value.summary,
+                                        "affectedServices": value.affectedServices,
+                                        "updates": value.updates
+                                    };
+                                    $.each(incident.updates, function(ukey, uval) {
+                                        var update = {
+                                            "date": DateTime.fromISO(uval.date),
+                                            "details": uval.details,
+                                        };
+                                        if (uval.url) {
+                                            update.url = uval.url;
+                                        }
+                                    });
+                                    incidents.push(incident);
+                                });
+
+                                var incidentsSorted = incidents.sort(ReverseSortByDate);
+
+                                // Set current time
+                                const now = DateTime.now()
+
+                                var currentRows = [];
+                                var futureRows = [];
+
+                                $.each(incidentsSorted, function(ikey, ival) {
+                                    var row = "<tr>";
+                                    row += "<th>" + ival.date.toFormat('yyyy-LL-dd HH:mm') + "</th>";
+                                    var statusClass = statusClasses[ival.status];
+                                    row += "<td><span class='badge bg-"+statusClass+"'>" + ival.status + "</span></td>";
+                                    row += "<td>" + ival.summary + "</td>";
+                                    row += "<td>" + ival.affectedServices + "</td>";
+                                    row += "<td>";
+                                    var sortedUpdates = ival.updates.sort(ReverseSortByDate);
+                                    scount = 0;
+                                    $.each(sortedUpdates, function(skey, sval) {
+                                        sdate = DateTime.fromISO(sval.date);
+                                        row += "<strong>" + sdate.toFormat('yyyy-LL-dd HH:mm') + "</strong>: ";
+                                        row += sval.details;
+                                        if (sval.url) {
+                                            row += ' <a href="' + sval.url + '" class="btn btn-sm btn-primary" role="button" target="_blank">Learn more</a>';
+                                        }
+                                        if (scount < sortedUpdates.length-1 ) {
+                                            row += "<hr>";
+                                        }
+                                        scount++;
+                                    });
+                                    row += "</td>";
+                                    row += "</tr>"
+                                    
+                                    // Decide which table the incident should be appended to.
+                                    if (ival.date <= now) {
+                                        currentRows.push(row);
+                                    } else {
+                                        //$("#future-table-body").html(row);
+                                        futureRows.push(row);
+                                    }
+                                });
+
+                                // Outside of above loop, now replace the html of the relevant table div with the set of rows just created:
+                                $("#current-table-body").html( currentRows );
+                                $("#future-table-body").html( futureRows );
+                            }
+                        );
+                    }
+
+
+                    $(document).ready( getUpdatedStatusContent() ); 
+
+                </script>
+                {{ end }}
+
+
+                <h2>Source data</h2>
+                <p>
+                {{ $link := partial "assets/link.html" (dict "href" site.Params.statusData.sourceURL "text" "JSON data feed" "class" "btn btn-primary btn-sm" "page" .Page) }}
+                {{ $link | safeHTML }} used for this page, check 
+                {{ $link := partial "assets/link.html" (dict "href" site.Params.statusData.viewURL "text" "here" "class" "btn btn-primary btn-sm" "page" .Page) }}
+                {{ $link | safeHTML }} for date/time of last update.</p>
+                </p>
+
+            </div>
+        </div>
+    </div>
+{{ end }}

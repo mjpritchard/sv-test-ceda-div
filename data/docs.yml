@@ -1,0 +1,7 @@
+# this file holds all menu entries for the docs sidebar
+# only shown in the "docs" section of the site
+
+- title: editing this site
+  pages:
+    - title: editing guide
+    - title: editing a news item

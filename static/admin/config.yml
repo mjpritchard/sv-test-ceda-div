@@ -29,8 +29,8 @@ collections:
     folder: /content/news/updates
     path: '{{year}}/{{slug}}'
     summary: "{{date | date('YYYY-MM-DD')}} {{title}}"
-    media_folder: '{{media_folder}}/news'
-    public_folder: '{{public_folder}}/news'
+    media_folder: '{{media_folder}}/news/{{year}}/{{slug}}'
+    public_folder: '{{public_folder}}/news/{{year}}/{{slug}}'
     fields:
       - { label: Date, name: date, widget: datetime }
       - { 

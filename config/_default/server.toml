@@ -5,19 +5,19 @@
     Access-Control-Allow-Origin = '*'
     Content-Security-Policy = """
         base-uri 'self'; \
-        connect-src 'self' *.analytics.google.com *.google.com *.google-analytics.com *.googletagmanager.com d3hb14vkzrxvla.cloudfront.net beaconapi.helpscout.net 127.0.0.1:8080 raw.githubusercontent.com mjpritchard.github.io; \
+        connect-src 'self' *.analytics.google.com *.google.com *.google-analytics.com *.googletagmanager.com d3hb14vkzrxvla.cloudfront.net beaconapi.helpscout.net 127.0.0.1:8080 raw.githubusercontent.com mjpritchard.github.io unpkg.com www.githubstatus.com api.github.com; \
         default-src 'none'; \
         font-src 'self' fonts.gstatic.com data:; \
         form-action 'self'; \
         frame-src *.googletagmanager.com player.cloudinary.com www.youtube-nocookie.com www.youtube.com player.vimeo.com *.google.com; \
-        img-src 'self' *.google-analytics.com *.googletagmanager.com googletagmanager.com ssl.gstatic.com www.gstatic.com *.google.com  beaconapi.helpscout.net data: *.imgix.net *.imagekit.io *.cloudinary.com i.ytimg.com tile.openstreetmap.org i.vimeocdn.com; \
+        img-src 'self' *.google-analytics.com *.googletagmanager.com googletagmanager.com ssl.gstatic.com www.gstatic.com *.google.com  beaconapi.helpscout.net data: *.imgix.net *.imagekit.io *.cloudinary.com i.ytimg.com tile.openstreetmap.org i.vimeocdn.com avatars.githubusercontent.com; \
         manifest-src 'self'; \
         media-src 'self'; \
         object-src 'none'; \
-        script-src-elem 'self' 'unsafe-inline' *.google.com *.myfonts.net *.helpscout.net; \
+        script-src-elem 'self' 'unsafe-inline' *.google.com *.myfonts.net *.helpscout.net unpkg.com; \
         script-src 'self' 'unsafe-inline' *.google-analytics.com *.googletagmanager.com *.analytics.google.com googletagmanager.com tagmanager.google.com *.google.com player.vimeo.com; \
         style-src-elem 'unsafe-inline' 'self' *.google.com fonts.googleapis.com *.myfonts.net; \
-        style-src 'self' googletagmanager.com tagmanager.google.com *.google.com fonts.googleapis.com www.youtube.com; \
+        style-src 'unsafe-inline' 'self' googletagmanager.com tagmanager.google.com *.google.com fonts.googleapis.com www.youtube.com avatars.githubusercontent.com mobile-promo-infobar.svelte ; \
         """
     Permissions-Policy = 'geolocation=(), midi=(), sync-xhr=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), fullscreen=(), payment=() '
     Referrer-Policy = 'strict-origin'

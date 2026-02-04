@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: mjpritchard/sv-test-ceda-div
+
+media_folder: /static/media
+public_folder: /media
+
+slug:
+  encoding: unicode
+  clean-accents: true
+  sanitize-replacement: '-'
+  lowercase: true
+
+collections:
+  - name: news
+    label: News updates
+    label_singular: News update
+    folder: /content/news/updates
+    path: '{{year}}/{{slug}}'
+    summary: "{{date | date('YYYY-MM-DD')}} {{title}}"
+    fields:
+      - { label: Date, name: date, widget: datetime }
+      - { label: Title, name: title, widget: string }
+      - { label: Body, name: body, widget: markdown }
+      - { label: Icon, name: icon, widget: string, required: false}
+      - { label: Thumbnail, name: thumbnail, widget: image, required: false }
+      #- { label: Tags, name: tags, widget: }
+    format: yaml-frontmatter
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+      

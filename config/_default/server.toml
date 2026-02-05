@@ -14,8 +14,8 @@
         manifest-src 'self'; \
         media-src 'self' blob: ; \
         object-src 'none'; \
-        script-src-elem 'self' 'unsafe-inline' *.google.com *.myfonts.net *.helpscout.net unpkg.com sv-test-ceda-div.netlify.app; \
-        script-src 'self' 'unsafe-inline' *.google-analytics.com *.googletagmanager.com *.analytics.google.com googletagmanager.com tagmanager.google.com *.google.com player.vimeo.com https://unpkg.com sv-test-ceda-div.netlify.app; \
+        script-src-elem 'self' 'unsafe-inline' unpkg.com *.google.com *.myfonts.net *.helpscout.net sv-test-ceda-div.netlify.app; \
+        script-src 'self' 'unsafe-inline' unpkg.com *.google-analytics.com *.googletagmanager.com *.analytics.google.com googletagmanager.com tagmanager.google.com *.google.com player.vimeo.com sv-test-ceda-div.netlify.app; \
         style-src-elem 'unsafe-inline' 'self' *.google.com fonts.googleapis.com *.myfonts.net; \
         style-src 'self' 'unsafe-inline' googletagmanager.com tagmanager.google.com *.google.com fonts.googleapis.com www.youtube.com avatars.githubusercontent.com sv-test-ceda-div.netlify.app; \
         """

@@ -1,11 +1,10 @@
 ---
 author: Matt Pritchard
-title: Welcome to CEDA!
 description: The Centre for Environmental Data Analysis serves the environmental science community by the provision of data centres, data analysis & access, and research project participation.
 content_blocks:
   - _bookshop_name: hero
     heading:
-      title: Welcome to CEDA!
+      title: Test site
       align: start
       content: >-
         The Centre for Environmental Data Analysis serves the environmental science community by the provision of data centres, data analysis & access, and research project participation.

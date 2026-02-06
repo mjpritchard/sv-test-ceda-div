@@ -56,33 +56,21 @@ buildFuture = true
   [services.googleAnalytics]
     ID = "G-QQ8KP42QSR"
 
-[outputFormats]
-  [outputFormats.server]
-    mediaType = "application/toml"
-    baseName = "server"
-    isPlainText = true
-    notAlternative = true
-    permalinkable = true
-    root = true
-  [outputFormats.netlify]
-    mediaType = "application/toml"
-    baseName = "netlify"
-    isPlainText = true
-    notAlternative = true
-    permalinkable = true
-    root = true
-  [outputFormats.XML]
-    isPlainText = false
-    mediaType = "application/xml"
-    isHtml = false
-    noUgly = true
-    permalinkable = false
-    name = "xml"
-  [outputFormats.REDIR]
-    mediaType = "text/netlify"
-    baseName = "_redirects"
-    isPlainText = true
-    notAlternative = true
+#[outputFormats]
+  #[outputFormats.server]
+  #  mediaType = "application/toml"
+  #  baseName = "server"
+  #  isPlainText = true
+  #  notAlternative = true
+  #  permalinkable = true
+  #  root = true
+  #[outputFormats.netlify]
+  #  mediaType = "application/toml"
+  #  baseName = "netlify"
+  #  isPlainText = true
+  #  notAlternative = true
+  #  permalinkable = true
+  #  root = true
 
 [mediaTypes."text/netlify"]
   delimiter = ""

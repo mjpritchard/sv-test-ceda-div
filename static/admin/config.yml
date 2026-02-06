@@ -7,7 +7,7 @@ backend:
 slug:
   encoding: unicode
   clean-accents: true
-  sanitize-replacement: '-'
+  sanitize-replacement: "-"
   lowercase: true
 
 media_folder: /assets/img
@@ -21,41 +21,29 @@ public_folder: /img
 #  - ceda
 #  - data-incident-nov25
 
-
 collections:
   - name: news
     label: News updates
     label_singular: News update
     folder: /content/news/updates
-    path: '{{year}}/{{slug}}'
+    path: "{{year}}/{{slug}}"
     summary: "{{date | date('YYYY-MM-DD')}} {{title}}"
-    media_folder: '{{media_folder}}/news/{{year}}/{{slug}}'
-    public_folder: '{{public_folder}}/news/{{year}}/{{slug}}'
+    media_folder: "{{media_folder}}/news/{{year}}/{{slug}}"
+    public_folder: "{{public_folder}}/news/{{year}}/{{slug}}"
     fields:
       - { label: Date, name: date, widget: datetime }
-      - { 
-        label: Tags,
-        name: tags,
-        widget: select,
-        required: false,
-        multiple: true,
-        options: [
-          'news',
-          'ceda',
-          'jasmin',
-          'data-incident-nov25'
-        ]
+      - {
+          label: Tags,
+          name: tags,
+          widget: select,
+          required: false,
+          multiple: true,
+          options: ["news", "ceda", "jasmin", "data-incident-nov25"],
         }
       - { label: Title, name: title, widget: string }
       - { label: Body, name: body, widget: markdown }
-      - { label: Icon, name: icon, widget: string, required: false}
-      - {
-        label: Thumbnail,
-        name: thumbnail, 
-        widget: image,
-        required: false
-        }
-          
+      - { label: Icon, name: icon, widget: string, required: false }
+      - { label: Thumbnail, name: thumbnail, widget: image, required: false }
+
     format: yaml-frontmatter
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-      
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"

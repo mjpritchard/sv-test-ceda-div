@@ -10,8 +10,6 @@ description: This event will celebrate 30 years of the Centre for Environmental 
 
 ---
 
-{{< image src="img/news/2024/2024-10-14-ceda-30th-celebration-event/ceda-30th-event.png" caption="Image showing the text: Celebrating 30 years of CEDA: help us imagine our future" >}}
-
 {{< button color="success" href="https://engagementhub.ukri.org/stfc-ralspace/celebrating-30-years-of-ceda-help-us-imagine-our-f" >}}**Register here to attend this event!**{{< /button >}}
 
 Join us for a special event marking 30 years of the Centre for Environmental Data Analysis! Over the past three decades, we’ve been dedicated to providing data and information services for environmental science through world-class data curation services, flexible technologies for data analysis and our contributions to national and international communities.
